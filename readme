@@ -1,11 +1,9 @@
+steps:
 1. Construct a empty project
 2. Use nightly version rustc 
-	a. rustup override set nightly-2022-08-05
 3. RUSTFLAGS="--emit=llvm-ir" cargo build --release -Z build-std --target x86_64-unknown-linux-gnu
-	a. Need to install rust source code 
-		i. rustup component add rust-src --toolchain nightly-2022-08-05-x86_64-unknown-linux-gnu
 4. rm target/x86_64-unknown-linux-gnu/release/deps/{panic_abort,proc_macro}-*.ll
-5. Link :
-		a. llvm-link target/x86_64-unknown-linux-gnu/release/deps/*.ll > withalldeps.ll
-        
+5. Link
+
+Reference:
 https://stackoverflow.com/questions/69042049/how-to-compile-rust-to-llvm-bitcode-including-dependencies
